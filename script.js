@@ -179,6 +179,8 @@ function addToCart(menuItemIndex) {
         });
     }
 
+
+
     // Nach dem Aktualisieren des orderArray, den Warenkorb neu rendern
     renderCart();
     renderCartView(); // Aufruf beibehalten, falls es spezifische UI-Updates gibt
@@ -251,13 +253,31 @@ function setupCartInteractionListener(containerId) {
     }
 }
 
-function showMessage() {
-    const messageDiv = document.getElementById("message");
-    if (messageDiv) {
-        messageDiv.style.display = "block";
-    }
+function clearCart() {
+    orderArray = []; // Setzt das orderArray auf ein leeres Array zurück
+    renderCart(); // Aktualisiert die Bestellübersicht
+    renderCartView();  // Aktualisiert die detaillierte Warenkorbansicht
 }
-console.log(showMessage());
+
+function showMessage() {
+    const msgDiv = document.getElementById("message");
+    if (!msgDiv) return;
+
+    msgDiv.style.display = "block";
+
+    const closeBtn = document.createElement("button");
+    closeBtn.textContent = "Schließen";
+    closeBtn.className = "closeButton";
+    msgDiv.appendChild(closeBtn);
+
+    closeBtn.onclick = () => {
+        msgDiv.style.display = "none";
+        if (typeof window.menuOrder !== 'undefined') window.menuOrder = null; 
+    
+        clearCart();
+        closeBtn.remove(); 
+    };
+}
 
 function init() {
     renderMenu();
