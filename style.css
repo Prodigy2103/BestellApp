@@ -245,7 +245,6 @@ header {
         background: lightgrey;
     }
 }
-
 /* #endregion */
 
 /* #region Order */
@@ -346,7 +345,7 @@ header {
         }
 
         .startBtn {
-            display: none;
+            display: none; /* Beibehalten wie gewünscht */
             background: rgb(225, 130, 21);
             width: 100%;
             text-align: center;
@@ -379,34 +378,33 @@ footer {
 /* #endregion */
 
 /* #region cartBtn */
+.cartBtn {
+    display: none; /* Beibehalten wie gewünscht */
+    background: rgb(225, 130, 21);
+    height: 3rem;
+    margin: 1rem 0;
+    border: none;
+    color: white;
+    font-size: 16px;
 
-    .cartBtn {
-        display: none;
-        background: rgb(225, 130, 21);
-        height: 3rem;
-        margin: 1rem 0;
-        border: none;
-        color: white;
-        font-size: 16px;
-
-        @media (max-width: 970px) {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
+    @media (max-width: 970px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
+}
 /* #endregion */
 
 /* #region cartContainer */
 .d_none {
-    display: none;
+    display: none; /* Beibehalten wie gewünscht */
 }
 
 #cartContainer {
     background: white;
     color: black;
-    height: 90dvh;
+    height: 100dvh;
     position: absolute;
     z-index: 20;
 
@@ -421,9 +419,9 @@ footer {
 
     .menuOrder {
         width: 100%;
-        min-height: 50dvh;
-        height: auto;
+        height: 90dvh;
         padding: 20px;
+        overflow: auto;
 
         p {
             text-align: center;
@@ -526,15 +524,16 @@ footer {
         padding-right: 2rem;
 
         .btnClose {
-            display: none;
+            display: none; /* Beibehalten wie gewünscht */
             width: 50px;
             height: 30px;
         }
     }
 }
 /* #endregion */
+
 #message {
-    display: none;
+    display: none; /* Beibehalten wie gewünscht */
     margin: 2rem;
     padding: 1rem;
     border: 1px solid green;

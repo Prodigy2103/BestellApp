@@ -213,7 +213,7 @@ function showMessage() {
                 messageDiv.style.display = 'block';
             }
         }
-console.log("showMessage() function called.");
+console.log(showMessage());
 
 function init() {
     renderMenu();
