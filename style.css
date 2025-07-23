@@ -256,6 +256,7 @@ header {
     height: 90dvh;
     z-index: 10;
     color: black;
+    padding: 1rem;
 
     @media (max-width: 970px) {
         display: none;
@@ -276,11 +277,12 @@ header {
         .menuOrder {
             width: 20rem;
             min-height: 50dvh;
-            height: 70dvh;
+            height: 65dvh;
             overflow: auto;
 
             p {
                 text-align: center;
+                margin-top: 1rem;
             }
 
             .cartItem {
@@ -342,25 +344,9 @@ header {
         .button-style:hover {
             background-color: #1f9d23;
         }
-
-        .startBtn {
-            background: rgb(225, 130, 21);
-            width: 100%;
-            text-align: center;
-            margin-top: 10px;
-            padding: 1rem;
-
-            a {
-                width: 100%;
-                color: white;
-                text-decoration: none;
-                border: none;
-                cursor: pointer;
-                text-align: center;
-            }
-        }
     }
 }
+
 /* #endregion */
 
 /* #region footer */
@@ -461,11 +447,11 @@ footer {
     }
 
     .summaryRow {
+        background: white;
         display: flex;
         justify-content: space-between;
-        margin-top: 10px;
         font-weight: bold;
-        padding: 0 15px;
+        padding: 0 25px;
     }
 
     .button-style {
@@ -517,12 +503,24 @@ footer {
 
 #message {
     display: none;
+    text-align: center;
     margin: 2rem;
     padding: 1rem;
-    border: 1px solid green;
-    background: #e6ffe6;
-    color: green;
-    z-index: 20;
+    box-shadow: 1px 1px 2px rgb(225, 130, 21);
+    background: white;
+    color: black;
+    top: 40px;
     position: absolute;
-    top: 30px;
+    z-index: 20;
+
+    .closeButton {
+        padding: 0.5rem;
+        background-color: rgb(225, 130, 21);
+        color: white;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+        border-radius: 0.5em;
+    }
 }
