@@ -1,0 +1,545 @@
+main {
+    display: flex;
+    width: 100%;
+
+    @media (max-width: 970px) {
+        flex-direction: column;
+    }
+
+    .content {
+        width: calc(100% - 20rem);
+
+        @media (max-width: 970px) {
+            width: 100%;
+        }
+    }
+}
+
+/* #region header */
+header {
+    width: 100%;
+    height: 10dvh;
+    background: rgb(225, 130, 21);
+
+    .content {
+        height: 10dvh;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            width: 20dvw;
+            height: 8dvh;
+            margin-left: 20px;
+        }
+
+        nav {
+            width: 4em;
+            height: 4em;
+            background-image: url("img/Material/Logo/burger-menu-square-light-gray-24661.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+    }
+}
+/* #endregion */
+
+/* #region shopMain */
+#shopMain {
+    @media (max-width: 970px) {
+        width: 100%;
+    }
+
+    .content {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+
+        .title {
+            width: 100%;
+
+            .titleImg {
+                width: 100%;
+                height: 30dvh;
+                background-image: url("img/Material/Logo/food-photo-8683717_640.jpg");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: flex;
+                justify-content: center;
+
+                .titleLogo {
+                    width: 200px;
+                    height: 200px;
+                    position: absolute;
+                    top: 11em;
+                    z-index: 10;
+                    background: white;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+/* #endregion */
+
+/* #region infoHead */
+#infoHead {
+    @media (max-width: 970px) {
+        width: 100%;
+    }
+
+    .content {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+
+        .headLine {
+            width: 100%;
+            height: 15dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1em;
+            color: black;
+            padding-left: 2rem;
+
+            @media (max-width: 620px) {
+                height: auto;
+                padding-top: 10em;
+                padding-left: 0;
+                align-items: center;
+            }
+
+            .evaluation {
+                color: rgb(225, 130, 21);
+            }
+        }
+    }
+}
+/* #endregion */
+
+/* #region shopNavi*/
+#shopNavi {
+    @media (max-width: 970px) {
+        width: 100%;
+    }
+
+    .content {
+        width: 100%;
+        height: 5em;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        background: rgb(211, 211, 211, 0.4);
+        padding-left: 2em;
+        gap: 3em;
+
+        @media (max-width: 375px) {
+            padding: 0.5em;
+        }
+
+        nav {
+            width: 100%;
+            height: 3em;
+            display: flex;
+            align-items: center;
+            gap: 2em;
+
+            a {
+                color: rgb(84, 83, 83, 0.8);
+                font-weight: bold;
+                font-size: calc(16px + 0.5dvw);
+                padding: 0.5em;
+                border: 2px solid rgb(84, 83, 83, 0.8);
+                border-radius: 1em;
+            }
+
+            a:hover {
+                color: black;
+            }
+        }
+
+        img {
+            width: 3em;
+            height: 3em;
+        }
+    }
+}
+/* #endregion */
+
+/* #region cartDish */
+#cartDish {
+    height: auto;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
+    @media (max-width: 970px) {
+        width: 100%;
+    }
+
+    .menuItems {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        box-shadow: 1px 2px 2px rgb(138, 138, 138);
+
+        @media (max-width: 950px) {
+            width: 100%;
+            justify-content: center;
+        }
+
+        @media (max-width: 375px) {
+            flex-direction: column;
+            padding: 0;
+        }
+
+        .itemsInfo {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            @media (max-width: 375px) {
+                font-size: 14px;
+                align-items: center;
+            }
+
+            p {
+                text-align: center;
+            }
+        }
+
+        img {
+            width: 80px;
+            height: 80px;
+            margin: 5px;
+
+            @media (max-width: 375px) {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        button {
+            background: white;
+            border: none;
+
+            img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    }
+
+    button:hover {
+        background: lightgrey;
+    }
+}
+
+/* #endregion */
+
+/* #region Order */
+#orderContainer {
+    position: sticky;
+    top: 0;
+    right: 0;
+    width: 20rem;
+    height: 90dvh;
+    z-index: 10;
+    color: black;
+
+    @media (max-width: 970px) {
+        display: none;
+    }
+
+    .content {
+        h2 {
+            text-align: center;
+            color: white;
+            background: rgb(225, 130, 21);
+        }
+
+        .orderItems {
+            width: 100%;
+            height: 50dvh;
+        }
+
+        .menuOrder {
+            width: 20rem;
+            min-height: 50dvh;
+            height: 70dvh;
+            overflow: auto;
+
+            p {
+                text-align: center;
+            }
+
+            .cartItem {
+                padding: 10px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                margin: 10px;
+                box-shadow: 1px 1px 1px rgb(118, 118, 118);
+
+                .cartItemInfo {
+                    display: flex;
+                    justify-content: space-around;
+                }
+
+                .cartItemActions {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 20px;
+
+                    button {
+                        margin: 10px;
+                        width: 50px;
+                        height: 25px;
+                        border-radius: 5px;
+                    }
+
+                    button:hover {
+                        background: teal;
+                    }
+                }
+            }
+        }
+
+        .summaryRow {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: bold;
+            padding: 0 15px;
+        }
+
+        .button-style {
+            width: 100%;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            background-color: #c1c3c5;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .button-style:hover {
+            background-color: #1f9d23;
+        }
+
+        .startBtn {
+            display: none;
+            background: rgb(225, 130, 21);
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+            padding: 1rem;
+
+            a {
+                width: 100%;
+                color: white;
+                text-decoration: none;
+                border: none;
+                cursor: pointer;
+                text-align: center;
+            }
+        }
+    }
+}
+/* #endregion */
+
+/* #region footer */
+footer {
+    width: 100%;
+    background: rgb(225, 130, 21);
+
+    .content {
+        width: 80%;
+        height: 10dvh;
+    }
+}
+/* #endregion */
+
+/* #region cartBtn */
+
+.cartBtn {
+    display: none;
+    background: rgb(225, 130, 21);
+    height: 3rem;
+    margin: 1rem 0;
+    border: none;
+    color: white;
+    font-size: 16px;
+
+    @media (max-width: 970px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+}
+/* #endregion */
+
+/* #region cartContainer */
+.d_none {
+    display: none;
+}
+
+#cartContainer {
+    background: white;
+    color: black;
+    height: 90dvh;
+    position: absolute;
+    z-index: 20;
+
+    h2 {
+        margin-top: 2rem;
+        text-align: center;
+    }
+    .orderItems {
+        width: 100%;
+        height: 50dvh;
+    }
+
+    .menuOrder {
+        width: 100%;
+        min-height: 50dvh;
+        height: auto;
+        padding: 20px;
+
+        p {
+            text-align: center;
+        }
+
+        .cartItem {
+            padding: 10px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 10px;
+            box-shadow: 1px 1px 1px rgb(118, 118, 118);
+
+            .cartItemInfo {
+                display: flex;
+                justify-content: center;
+                gap: 20rem;
+            }
+
+            .cartItemActions {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 50px;
+
+                button {
+                    margin: 10px 0;
+                    width: 50px;
+                    height: 25px;
+                    border-radius: 5px;
+                }
+
+                button:hover {
+                    background: teal;
+                }
+            }
+        }
+    }
+
+    .summaryRow {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-weight: bold;
+        padding: 0 15px;
+    }
+
+    .button-style {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        padding: 1rem;
+        background-color: rgb(225, 130, 21);
+        color: white;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .button-style:hover {
+        background-color: rgb(225, 130, 21, 0.6);
+        color: black;
+    }
+
+    .startBtn {
+        background: rgb(225, 130, 21);
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+        padding: 1rem;
+
+        a {
+            width: 100%;
+            color: white;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        a:hover {
+            color: black;
+        }
+    }
+
+    .startBtn:hover {
+        background-color: rgb(225, 130, 21, 0.6);
+    }
+
+    #closeBtn {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        padding-right: 2rem;
+
+        .btnClose {
+            display: none;
+            width: 50px;
+            height: 30px;
+        }
+    }
+}
+/* #endregion */
+#message {
+    display: none;
+    margin: 2rem;
+    padding: 1rem;
+    border: 1px solid green;
+    background: #e6ffe6;
+    color: green;
+    z-index: 20;
+}
+
+
+
+
+

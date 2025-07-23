@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="standard.css" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="img/Material/Favicon/favicon-32x32.png" />
+        <title>Bestellapp</title>
+    </head>
+    <body>
+        <!-- header + img + dummynav -->
+        <header>
+            <div class="content">
+                <img src="img/Material/Logo/Bestell App- Logo.svg" alt="" />
+                <nav></nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="content">
+                <!-- section content imgcontainer und logo -->
+                <!-- container h1 p für Firmenmotto und bewertung -->
+                <section id="shopMain">
+                    <div class="content">
+                        <div class="title">
+                            <div class="titleImg">
+                                <img
+                                    class="titleLogo"
+                                    src="img/Wasiri/Logo_riesenImbiss_riese.png"
+                                    alt=""
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="infoHead">
+                    <div class="content">
+                        <div class="headLine">
+                            <h1>Riesenimbiss</h1>
+                            <p>Der Imbiss der's bringt!!!</p>
+                            <p class="evaluation">
+                                Bewertung (4,7 von 5 Sternen)
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="shopNavi">
+                    <div class="content">
+                        <img
+                            src="img/Material/Logo/right-triangular-arrowhead.png"
+                            alt=""
+                        />
+                        <nav>
+                            <a href="">Döner</a>
+                            <a href="">Kumpir</a>
+                        </nav>
+                    </div>
+                </section>
+
+                <section id="cartDish">
+                    
+                </section>
+            </div>
+            <!-- section Warenkorb -->
+            <!-- container input waren -->
+            <!-- table Kosten (Zwischensumme, Lieferkosten und Gesamtpreis) -->
+
+            <section id="orderContainer">
+                <div class="content">
+                    <div id="order"></div>
+                </div>
+            </section>
+
+            <button id="cartToggle" class="cartBtn">Warenkorb anzeigen</button>
+            <section id="cartContainer" class="d_none"></section>
+
+            
+        </main>
+
+        <footer>
+            <div class="content">Gühne Marcus</div>
+        </footer>
+
+        <script src="template.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
