@@ -62,3 +62,30 @@ function getOrderContainerTemplate(itemsHtml, subtotal, total) {
         </div>
     `;
 }
+
+
+function getCartContainerTemplate(itemsHtml, subtotal, total) {
+    return `
+        <div class="orderItems">
+            <h2>Ihr Warenkorb</h2>
+
+            <div class="menuOrder">
+                ${itemsHtml}
+            </div>
+            <div class="summaryRow">
+                <p>Zwischensumme:</p>
+                <p id="subtotal">${formatPrice(subtotal)}</p> </div>
+            <div class="summaryRow">
+                <p>Lieferkosten:</p>
+                <p>5,00€</p>
+            </div>
+            <div class="summaryRow">
+                <p>Gesamt:</p>
+                <p id="total">${formatPrice(total)}</p> </div>
+                <div id="message">Ihre Bestellung ist eingegangen und wird bearbeitet</div>
+                <button id="messageButton" class="button-style" onclick="showMessage()">Bestellung bestätigen</button>
+                <div class="startBtn"><p><a href="index.html">Zurück zur Startseite</a></p></div>
+            </div>
+        </div>
+    `;
+}

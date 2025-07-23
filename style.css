@@ -288,7 +288,7 @@ header {
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                margin: 10px;
+
                 box-shadow: 1px 1px 1px rgb(118, 118, 118);
 
                 .cartItemInfo {
@@ -326,16 +326,15 @@ header {
 
         .button-style {
             width: 100%;
-            height: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 10px;
-            background-color: #c1c3c5;
-            color: rgb(0, 0, 0);
+            padding: 1rem;
+            background-color: rgb(225, 130, 21);
+            color: white;
             text-decoration: none;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
             text-align: center;
         }
@@ -345,7 +344,6 @@ header {
         }
 
         .startBtn {
-            display: none; /* Beibehalten wie gewünscht */
             background: rgb(225, 130, 21);
             width: 100%;
             text-align: center;
@@ -379,7 +377,7 @@ footer {
 
 /* #region cartBtn */
 .cartBtn {
-    display: none; /* Beibehalten wie gewünscht */
+    display: none;
     background: rgb(225, 130, 21);
     height: 3rem;
     margin: 1rem 0;
@@ -398,7 +396,7 @@ footer {
 
 /* #region cartContainer */
 .d_none {
-    display: none; /* Beibehalten wie gewünscht */
+    display: none;
 }
 
 #cartContainer {
@@ -432,7 +430,7 @@ footer {
             width: 100%;
             display: flex;
             flex-direction: column;
-            margin: 10px;
+            /* margin: 10px; */
             box-shadow: 1px 1px 1px rgb(118, 118, 118);
 
             .cartItemInfo {
@@ -514,30 +512,17 @@ footer {
     .startBtn:hover {
         background-color: rgb(225, 130, 21, 0.6);
     }
-
-    #closeBtn {
-        width: 100%;
-        height: 50px;
-        display: flex;
-        justify-content: end;
-        align-items: center;
-        padding-right: 2rem;
-
-        .btnClose {
-            display: none; /* Beibehalten wie gewünscht */
-            width: 50px;
-            height: 30px;
-        }
-    }
 }
 /* #endregion */
 
 #message {
-    display: none; /* Beibehalten wie gewünscht */
+    display: none;
     margin: 2rem;
     padding: 1rem;
     border: 1px solid green;
     background: #e6ffe6;
     color: green;
     z-index: 20;
+    position: absolute;
+    top: 30px;
 }
