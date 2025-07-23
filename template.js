@@ -46,6 +46,7 @@ function getOrderContainerTemplate(itemsHtml, subtotal, total) {
             <div class="menuOrder">
                 ${itemsHtml}
             </div>
+            <div class="rows">
             <div class="summaryRow">
                 <p>Zwischensumme:</p>
                 <p id="subtotal">${formatPrice(subtotal)}</p> </div>
@@ -56,10 +57,14 @@ function getOrderContainerTemplate(itemsHtml, subtotal, total) {
             <div class="summaryRow">
                 <p>Gesamt:</p>
                 <p id="total">${formatPrice(total)}</p> </div>
-                <div id="message">Ihre Bestellung ist eingegangen und wird bearbeitet</div>
-                <button id="messageButton" class="button-style" onclick="showMessage()">Bestellung bestätigen</button>
-                <div class="startBtn"><p><a href="index.html">Zurück zur Startseite</a></p></div>
-        </div>
+                </div>
+                <div id="message">
+                Ihre Bestellung ist eingegangen und wird bearbeitet<br><br>
+                </div>
+                <button id="messageButton" class="button-style" class="d_none" onclick="showMessage()">Bestellung bestätigen</button>
+                </div>
+
+                
     `;
 }
 
