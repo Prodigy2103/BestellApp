@@ -207,13 +207,6 @@ function setupCartInteractionListener(containerId) {
     }
 }
 
-// function showMessage() {
-//     const messageDiv = document.getElementById('message');
-//     if (messageDiv) {
-//         messageDiv.style.display = 'block';
-//     }
-// }
-
 function showMessage() {
             const messageDiv = document.getElementById('message');
             if (messageDiv) {
