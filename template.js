@@ -1,13 +1,13 @@
 function getMenuItem(index, name, desc, formattedPrice, img) {
     return `
-        <div class="menu-item" data-item-index="${index}">
+        <div class="menuItem" data-item-index="${index}">
             <div class="menuItems">
                 <img src="${img}" alt="${name}"> <div class="itemsInfo">
                     <h3>${name}</h3>
                     <p>${desc}</p>
                     <p>Preis: ${formattedPrice}</p>
                 </div>
-            <button class="add-to-cart-button">
+            <button class="addToCartButton">
                 <img src="img/Material/Logo/icons8-plus-128.png" alt="In den Warenkorb legen">
             </button>
         </div>
@@ -24,14 +24,14 @@ function getOrderItemTemplate(
     return `
         <div class="cartItem" data-order-index="${orderArrayIndex}" data-menu-item-original-index="${menuItemOriginalIndex}">
             <div class="cartItemInfo">
-                <span class="item-title">${name}</span>
-                <span class="item-price">${formattedTotalPrice}</span>
+                <span class="itemTitle">${name}</span>
+                <span class="itemPrice">${formattedTotalPrice}</span>
             </div>
             <div class="cartItemActions">
-                <button class="decrease-quantity-button">-</button>
-                <span class="item-quantity">${quantity}x</span>
-                <button class="increase-quantity-button">+</button>
-                <button class="remove-from-cart-button">X</button>
+                <button class="decreaseQuantityButton">-</button>
+                <span class="itemQuantity">${quantity}x</span>
+                <button class="increaseQuantityButton">+</button>
+                <button class="removeFromCartButton">X</button>
             </div>
             
         </div>
