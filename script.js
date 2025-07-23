@@ -221,13 +221,6 @@ function showMessage() {
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const myButton = document.getElementById('messageButton');
-            if (myButton) {
-                myButton.addEventListener('click', showMessage);
-            }
-        });
-
 function init() {
     renderMenu();
     renderCart();
