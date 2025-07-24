@@ -1,3 +1,26 @@
+function init() {
+    renderMenu();
+    renderCart();
+    renderCartView();
+
+    const menuItemsContainer = document.getElementById("cartDish");
+    if (menuItemsContainer) {
+        menuItemsContainer.addEventListener("click", function (event) {
+            const button = event.target.closest(".addToCartButton");
+            if (button) {
+                const menuItemDiv = button.closest(".menuItem");
+                if (menuItemDiv) {
+                    addToCart(parseInt(menuItemDiv.dataset.itemIndex));
+                }
+            }
+        });
+    }
+    setupCartInteractionListener("order");
+    setupCartInteractionListener("cartContainer");
+    const orderButton = document.getElementById("orderButton");
+    if (orderButton) orderButton.addEventListener("click", handleOrderButtonClick);
+}
+
 class CardItem {
     // #region attributes
 
@@ -83,20 +106,11 @@ function renderMenu() {
         // Überprüft, ob das Element itemRef (also das Element mit der ID "cartDish") gefunden wurde.
         itemRef.innerHTML = ""; // Leert den Inhalt des gefundenen HTML-Elements.
 
-        if (
-            typeof menuItemsArray !== "undefined" &&
-            menuItemsArray.length > 0
+        if (typeof menuItemsArray !== "undefined" && menuItemsArray.length > 0
         ) {
-            // Prüft, ob das menuItemsArray Elemente enthält nicht leer ist.
-            for (let i = 0; i < menuItemsArray.length; i++) {
-                // Startet eine Schleife, die durch jedes Element im menuItemsArray läuft.
-                const item = menuItemsArray[i]; // Holt das aktuelle Element des Arrays in der Schleife und speichert es in item.
-                itemRef.innerHTML += getMenuItem(
-                    i,
-                    item.title,
-                    item.desc,
-                    formatPrice(item.price),
-                    item.img
+        for (let i = 0; i < menuItemsArray.length; i++) {
+            const item = menuItemsArray[i]; // Holt das aktuelle Element des Arrays in der Schleife und speichert es in item.
+                itemRef.innerHTML += getMenuItem(i, item.title, item.desc, formatPrice(item.price), item.img
                 ); // Fügt den HTML-Code, der von der Funktion getMenuItem generiert wird, zum itemRef-Element hinzu. Dabei werden Index, Titel, Beschreibung, formatierter Preis und Bild des Menüpunkts übergeben
             }
         }
@@ -104,78 +118,50 @@ function renderMenu() {
 }
 
 function renderCart() {
-    const orderRef = document.getElementById("order"); //Holt das HTML-Element mit der ID "order" und speichert es in orderRef.
-    let subtotal = 0; // Initialisiert eine Variable subtotal (Zwischensumme) mit dem Wert 0.
-    const allOrderItemsHtml =
-        typeof orderArray !== "undefined" && orderArray.length > 0 //Beginnt eine Operation, die prüft, ob orderArray definiert ist und Elemente enthält.
-            ? orderArray
-                .map((entry, j) => {
-                      //Wenn orderArray existiert und nicht leer ist, wird es durchlaufen und jedes Element wird einer Funktion übergeben.
-                      const itemTotal = entry.item.price * entry.quantity; //Berechnet den Gesamtpreis für das aktuelle Bestellelement (Preis mal Menge).
-                      subtotal += itemTotal; // hier wird addiert
-                    return getOrderItemTemplate(
-                          j, entry.item.index, entry.item.title, formatPrice(itemTotal), entry.quantity); // Gibt den HTML-Code für ein Bestellelement zurück, der von getOrderItemTemplate generiert wird.
-                })
-                  .join("") //Verbindet alle generierten HTML-Strings zu einem einzigen String.
-            : `<div class="emptyCartMessageInner"><p>Ihr Warenkorb ist leer.</p></div>`; // Verbindet alle generierten HTML-Strings zu einem einzigen String.
-
-    const deliveryCost = 5.0;
-    const total = subtotal + deliveryCost; //Berechnet den Gesamtpreis, indem die Versandkosten zur Zwischensumme addiert werden.
-    if (orderRef) {
-        // Prüft, ob das HTML-Element orderRef (also das Element mit der ID "order") gefunden wurde
-        orderRef.innerHTML = getOrderContainerTemplate(
-            allOrderItemsHtml,
-            subtotal,
-            total
-        ); //Setzt den inneren HTML-Inhalt des orderRef-Elements auf den von getOrderContainerTemplate generierten HTML-Code, der die Bestellelemente, die Zwischensumme und den Gesamtbetrag enthält.
-    }
-}
-// siehe renderCart zwecks erklärung
-function renderCartView() {
-    const orderRef = document.getElementById("cartOrder");
+    const orderRef = document.getElementById("order");
     let subtotal = 0;
-    const allOrderItemsHtml =
-        typeof orderArray !== "undefined" && orderArray.length > 0
-            ? orderArray
-                .map((entry, j) => {
-                      const itemTotal = entry.item.price * entry.quantity;
-                    subtotal += itemTotal;
-                    return getOrderItemTemplate(j, entry.item.index, entry.item.title, formatPrice(itemTotal), entry.quantity);
-                })
-                .join("")
-            : `<div class="emptyCartMessageInner"><p>Ihr Warenkorb ist leer.</p></div>`;
+    const allOrderItemsHtml = (typeof orderArray !== "undefined" && orderArray.length > 0)
+        ? orderArray.map((entry, j) => {
+            const itemTotal = entry.item.price * entry.quantity;
+            subtotal += itemTotal;
+            return getOrderItemTemplate(j, entry.item.index, entry.item.title, formatPrice(itemTotal), entry.quantity);
+        }).join("")
+        : `<div class="emptyCartMessageInner"><p>Ihr Warenkorb ist leer.</p></div>`;
 
     const deliveryCost = 5.0;
     const total = subtotal + deliveryCost;
-    if (orderRef) {
-        orderRef.innerHTML = getCartContainerTemplate(
-            allOrderItemsHtml,
-            subtotal,
-            total
-        );
-    }
+    if (orderRef) orderRef.innerHTML = getOrderContainerTemplate(allOrderItemsHtml, subtotal, total);
+}
+
+function renderCartView() {
+    const orderRef = document.getElementById("cartOrder");
+    let subtotal = 0;
+    const allOrderItemsHtml = (typeof orderArray !== "undefined" && orderArray.length > 0)
+        ? orderArray.map((entry, j) => {
+            const itemTotal = entry.item.price * entry.quantity;
+            subtotal += itemTotal;
+            return getOrderItemTemplate(j, entry.item.index, entry.item.title, formatPrice(itemTotal), entry.quantity);
+        }).join("")
+        : `<div class="emptyCartMessageInner"><p>Ihr Warenkorb ist leer.</p></div>`;
+
+    const deliveryCost = 5.0;
+    const total = subtotal + deliveryCost;
+    if (orderRef) orderRef.innerHTML = getCartContainerTemplate(allOrderItemsHtml, subtotal, total);
 }
 
 function addToCart(menuItemIndex) {
     if (!menuItemsArray?.[menuItemIndex]) {
-        console.error("Menüelement nicht gefunden oder menuItemsArray nicht initialisiert.");
+        console.error("Menüelement nicht gefunden.");
         return;
     }
     orderArray = orderArray || [];
-
     const itemToAdd = menuItemsArray[menuItemIndex];
-    const existingItem = orderArray.find(
-        entry => entry.cartItem.index === menuItemIndex
-    );
+    const existingItem = orderArray.find(entry => entry.cartItem.index === menuItemIndex);
 
     if (existingItem) {
         existingItem.quantity++;
     } else {
-        orderArray.push({
-            item: { ...itemToAdd },
-            cartItem: { index: menuItemIndex },
-            quantity: 1,
-        });
+        orderArray.push({ item: { ...itemToAdd }, cartItem: { index: menuItemIndex }, quantity: 1 });
     }
     renderCart();
     renderCartView();
@@ -223,25 +209,18 @@ function deleteFromCart(cartItemIndex) {
 }
 
 function setupCartInteractionListener(containerId) {
-    const container = document.getElementById(containerId); //Sucht das HTML-Element mit der übergebenen containerId und speichert es in der Konstante container.
+    const container = document.getElementById(containerId);
     if (container) {
-        // Prüft, ob das container-Element tatsächlich im Dokument gefunden wurde.
         container.addEventListener("click", function (event) {
-            //Fügt dem container-Element einen Event-Listener hinzu. Dieser Listener wartet auf click-Ereignisse. Wenn ein Klick innerhalb des Containers stattfindet, wird die anonyme Funktion ausgeführt, wobei das event-Objekt übergeben wird.
-            const cartItemDiv = event.target.closest(".cartItem"); //Beim Klick findet event.target.closest(".cartItem") das nächstgelegene .cartItem-Element. Das ist wichtig, um zu wissen, welches Warenkorb-Element geklickt wurde, selbst wenn ein Button innerhalb dieses Elements betroffen war.
+            const cartItemDiv = event.target.closest(".cartItem");
             if (cartItemDiv) {
-                //Prüft, ob ein übergeordnetes .cartItem-Element gefunden wurde. Das bedeutet, der Klick erfolgte innerhalb eines relevanten Warenkorb-Elements.
-                const index = parseInt(cartItemDiv.dataset.orderIndex); //Wenn ein .cartItem-Element gefunden wurde, wird sein data-order-index-Attribut ausgelesen. Dieses Attribut enthält wahrscheinlich den Index des Artikels im orderArray. parseInt() konvertiert den String-Wert in eine Ganzzahl.
-
+                const index = parseInt(cartItemDiv.dataset.orderIndex);
                 if (event.target.closest(".removeFromCartButton")) {
-                    //Prüft, ob das geklickte Element oder eines seiner übergeordneten Elemente die Klasse .remove-from-cart-button hat.
-                    deleteFromCart(index); //Wenn der "Entfernen"-Button geklickt wurde, wird die Funktion deleteFromCart() mit dem ausgelesenen index aufgerufen, um den Artikel vollständig aus dem Warenkorb zu entfernen.
+                    deleteFromCart(index);
                 } else if (event.target.closest(".increaseQuantityButton")) {
-                    //Wenn nicht der "Entfernen"-Button geklickt wurde, prüft es, ob der Klick auf ein Element mit der Klasse .increase-quantity-button erfolgte.
-                    addOneProduct(index); //Wenn der "Menge erhöhen"-Button geklickt wurde, wird die Funktion addOneProduct() mit dem index aufgerufen, um die Menge des Artikels um eins zu erhöhen
+                    addOneProduct(index);
                 } else if (event.target.closest(".decreaseQuantityButton")) {
-                    //Wenn keine der vorherigen Bedingungen zutraf, prüft es, ob der Klick auf ein Element mit der Klasse .decrease-quantity-button erfolgte.
-                    removeOneProduct(index); //Wenn der "Menge verringern"-Button geklickt wurde, wird die Funktion removeOneProduct() mit dem index aufgerufen, um die Menge des Artikels um eins zu verringern (und ihn ggf. zu entfernen, wenn die Menge null erreicht).
+                    removeOneProduct(index);
                 }
             }
         });
@@ -256,8 +235,7 @@ function clearCart() {
 
 function showMessageOne() {
     const msgDiv = document.getElementById("message");
-    if (!msgDiv)    
-        return;
+    if (!msgDiv) return;
 
     msgDiv.style.display = "block";
 
@@ -269,16 +247,14 @@ function showMessageOne() {
     closeBtn.onclick = () => {
         msgDiv.style.display = "none";
         if (typeof window.menuOrder !== 'undefined') window.menuOrder = null;
-    
         clearCart();
-        closeBtn.remove(); 
+        closeBtn.remove();
     };
 }
 
 function showMessageTwo() {
     const msgDiv = document.getElementById("messageTwo");
-    if (!msgDiv)    
-        return;
+    if (!msgDiv) return;
 
     msgDiv.style.display = "block";
 
@@ -294,39 +270,6 @@ function showMessageTwo() {
         clearCart();
         closeBtn.remove(); 
     };
-}
-
-function init() {
-    renderMenu();
-    renderCart();
-    renderCartView();
-
-    const menuItemsContainer = document.getElementById("cartDish"); //Holt das HTML-Element mit der ID "cartDish"
-    if (menuItemsContainer) {
-        //Überprüft, ob der menuItemsContainer im DOM gefunden wurde.
-        menuItemsContainer.addEventListener("click", function (event) {
-            //Fügt dem menuItemsContainer einen Event-Listener für click-Ereignisse hinzu.
-            const button = event.target.closest(".addToCartButton"); //Wenn ein Klick im Menü-Container erfolgt, sucht es das nächstgelegene übergeordnete Element (oder das Element selbst) mit der Klasse .add-to-cart-button.
-            if (button) {
-                //Prüft, ob ein .add-to-cart-button gefunden wurde.
-                const menuItemDiv = button.closest(".menuItem"); //Sucht vom gefundenen Button aus das nächstgegelegene übergeordnete Element mit der Klasse .menu-item.
-                if (menuItemDiv) {
-                    //Prüft, ob ein .menu-item-Element gefunden wurde.
-                    const index = parseInt(menuItemDiv.dataset.itemIndex); //Liest den data-item-index aus dem menuItemDiv aus und konvertiert ihn in eine Ganzzahl. Dieser Index identifiziert das spezifische Menüelement.
-                    addToCart(index); //Ruft die Funktion addToCart() mit dem gefundenen index auf, um den Artikel dem Warenkorb hinzuzufügen.
-                }
-            }
-        });
-    }
-
-    setupCartInteractionListener("order"); //Ruft die Funktion setupCartInteractionListener() auf, um Klick-Ereignisse innerhalb des HTML-Elements mit der ID "order" zu überwachen
-    setupCartInteractionListener("cartContainer"); //Ruft die setupCartInteractionListener()-Funktion erneut auf, um Klick-Ereignisse innerhalb des HTML-Elements mit der ID "cartContainer" zu überwachen.
-
-    const orderButton = document.getElementById("orderButton"); //Sucht das HTML-Element mit der ID "orderButton" (den "Bestellen"-Button) im Dokument und speichert es in der Konstante orderButton.
-    if (orderButton) {
-        //Überprüft, ob das orderButton-Element im HTML gefunden wurde.
-        orderButton.addEventListener("click", handleOrderButtonClick); //Fügt dem orderButton einen Klick-Event-Listener hinzu. Wenn der Button angeklickt wird, wird die Funktion handleOrderButtonClick() ausgeführt.
-    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
