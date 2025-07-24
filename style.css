@@ -406,6 +406,13 @@ footer {
                     justify-content: center;
                     align-items: center;
                     border-radius: 1em;
+                    cursor: pointer;
+
+                    @media(max-width: 450px) {
+                        width: 30px;
+                        height: 30px;
+                        font-size: 10px;
+                    }
                 }
 
                 .startBtn:hover {
@@ -480,7 +487,6 @@ footer {
             }
 
             .headBtn {
-                background: red;
                 width: 100%;
                 height: 50px;
             }
