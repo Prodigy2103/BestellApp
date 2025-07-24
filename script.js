@@ -132,7 +132,7 @@ function renderCart() {
 }
 // siehe renderCart zwecks erklärung
 function renderCartView() {
-    const orderRef = document.getElementById("cartContainer");
+    const orderRef = document.getElementById("cartOrder");
     let subtotal = 0;
     const allOrderItemsHtml =
         typeof orderArray !== "undefined" && orderArray.length > 0
@@ -156,6 +156,35 @@ function renderCartView() {
     }
 }
 
+// function addToCart(menuItemIndex) {
+//     if (!menuItemsArray?.[menuItemIndex]) {
+//         console.error("Menüelement nicht gefunden oder menuItemsArray nicht initialisiert.");
+//         return;
+//     }
+
+//     orderArray = orderArray || []; // Stellt sicher, dass orderArray initialisiert ist.
+
+//     const itemToAdd = menuItemsArray[menuItemIndex];
+//     // Suche im orderArray, ob der Artikel bereits existiert, basierend auf seinem ursprünglichen Index
+//     const existingItem = orderArray.find(
+//         (entry) => entry.item.index === itemToAdd.index
+//     );
+
+//     if (existingItem) {
+//         existingItem.quantity++;
+//     } else {
+//         orderArray.push({
+//             item: { ...itemToAdd, index: menuItemIndex }, // Füge den originalen Index hinzu
+//             quantity: 1,
+//         });
+//     }
+
+//     // Nach dem Aktualisieren des orderArray, den Warenkorb neu rendern
+//     renderCart();
+//     renderCartView(); // Aufruf beibehalten, falls es spezifische UI-Updates gibt
+// }
+
+
 function addToCart(menuItemIndex) {
     if (!menuItemsArray?.[menuItemIndex]) {
         console.error("Menüelement nicht gefunden oder menuItemsArray nicht initialisiert.");
@@ -167,19 +196,18 @@ function addToCart(menuItemIndex) {
     const itemToAdd = menuItemsArray[menuItemIndex];
     // Suche im orderArray, ob der Artikel bereits existiert, basierend auf seinem ursprünglichen Index
     const existingItem = orderArray.find(
-        (entry) => entry.item.index === itemToAdd.index
+        (entry) => entry.cartItem.index === itemToAdd.index
     );
 
     if (existingItem) {
         existingItem.quantity++;
     } else {
         orderArray.push({
-            item: { ...itemToAdd, index: menuItemIndex }, // Füge den originalen Index hinzu
+            item: { ...itemToAdd },
+            cartItem: { index: menuItemIndex }, // Speichert den menuItemIndex im cartItem
             quantity: 1,
         });
     }
-
-
 
     // Nach dem Aktualisieren des orderArray, den Warenkorb neu rendern
     renderCart();
@@ -261,7 +289,8 @@ function clearCart() {
 
 function showMessage() {
     const msgDiv = document.getElementById("message");
-    if (!msgDiv) return;
+    if (!msgDiv)    
+        return;
 
     msgDiv.style.display = "block";
 
@@ -272,7 +301,28 @@ function showMessage() {
 
     closeBtn.onclick = () => {
         msgDiv.style.display = "none";
-        if (typeof window.menuOrder !== 'undefined') window.menuOrder = null; 
+        if (typeof window.menuOrder !== 'undefined') window.menuOrder = null;
+    
+        clearCart();
+        closeBtn.remove(); 
+    };
+}
+
+function showMessage() {
+    const msgDiv = document.getElementById("messageTwo");
+    if (!msgDiv)    
+        return;
+
+    msgDiv.style.display = "block";
+
+    const closeBtn = document.createElement("button");
+    closeBtn.textContent = "Schließen";
+    closeBtn.className = "closeButton";
+    msgDiv.appendChild(closeBtn);
+
+    closeBtn.onclick = () => {
+        msgDiv.style.display = "none";
+        if (typeof window.menuOrder !== 'undefined') window.menuOrder = null;
     
         clearCart();
         closeBtn.remove(); 
@@ -315,8 +365,8 @@ function init() {
 document.addEventListener("DOMContentLoaded", () => {
     init();
 
-    const cartToggleButton = document.getElementById("cartToggle"); //Sucht das HTML-Element mit der ID "cartToggle" (vermutlich ein Button oder Icon zum Öffnen/Schließen des Warenkorbs) und speichert es in der Konstante cartToggleButton.
-    const cartContainer = document.getElementById("cartContainer"); //Sucht das HTML-Element mit der ID "cartContainer" (den Hauptcontainer, der den gesamten Warenkorbinhalt anzeigt) und speichert es in der Konstante cartContainer.
+    const cartToggleButton = document.getElementById("cartToggle"); //Sucht das HTML-Element mit der ID "cartToggle"zum Öffnen/Schließen des Warenkorbs und speichert es in der Konstante cartToggleButton.
+    const cartContainer = document.getElementById("cartContainer"); //Sucht das HTML-Element mit der ID "cartContainer" den Hauptcontainer, der den gesamten Warenkorbinhalt anzeigt und speichert es in der Konstante cartContainer.
 
     if (cartToggleButton && cartContainer) {
         //Überprüft, ob beide Elemente – der Umschalter und der Container – erfolgreich im Dokument gefunden wurden. Dies verhindert Fehler, falls eines der Elemente fehlt.
