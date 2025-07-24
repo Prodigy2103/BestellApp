@@ -248,108 +248,6 @@ header {
 /* #endregion */
 
 /* #region Order */
-/* #orderContainer {
-    position: sticky;
-    top: 0;
-    right: 0;
-    width: 20rem;
-    height: 90dvh;
-    z-index: 10;
-    color: black;
-    padding: 1rem;
-
-    @media (max-width: 970px) {
-        display: none;
-    }
-
-    .content {
-
-        height: 90dvh;
-        h2 {
-            text-align: center;
-            color: white;
-            background: rgb(225, 130, 21);
-        }
-
-        .orderItems {
-            border: 2px solid green;
-            width: 100%;
-            height: 50dvh;
-        }
-
-        .menuOrder {
-            width: 20rem;
-            min-height: 50dvh;
-            overflow: auto;
-
-            p {
-                text-align: center;
-                margin-top: 1rem;
-            }
-
-            .cartItem {
-                padding: 10px;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-
-                box-shadow: 1px 1px 1px rgb(118, 118, 118);
-
-                .cartItemInfo {
-                    display: flex;
-                    justify-content: space-around;
-                }
-
-                .cartItemActions {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 20px;
-
-                    button {
-                        margin: 10px;
-                        width: 50px;
-                        height: 25px;
-                        border-radius: 5px;
-                    }
-
-                    button:hover {
-                        background: teal;
-                    }
-                }
-            }
-        }
-
-        .summaryRow {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-weight: bold;
-            padding: 0 15px;
-        }
-
-        .button-style {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: end;
-        margin-top: 10px;
-        padding: 1rem;
-        background-color: rgb(225, 130, 21);
-        color: white;
-        text-decoration: none;
-        border: none;
-        cursor: pointer;
-        text-align: center;
-    }
-
-    .button-style:hover {
-        background-color: rgb(225, 130, 21, 0.6);
-        color: black;
-    }
-    }
-} */
-
 #orderContainer {
     position: sticky;
     top: 0;
@@ -494,119 +392,133 @@ footer {
 #cartContainer {
     background: white;
     color: black;
+    width: 100%;
     height: 100dvh;
     position: absolute;
     z-index: 20;
 
     .content {
-        width: 100%;
-    }
-    h2 {
-        margin-top: 2rem;
-        text-align: center;
-    }
-    .orderItems {
-        width: 100%;
-    }
-
-    .menuOrder {
-        width: 500px;
-        height: 70dvh;
-        padding: 20px;
-        overflow: auto;
-
-        p {
+        h2 {
+            margin-top: 2rem;
             text-align: center;
         }
-
-        .cartItem {
-            padding: 10px;
+        .orderItems {
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 1px 1px 1px rgb(118, 118, 118);
+        }
 
-            .cartItemInfo {
-                display: flex;
-                justify-content: center;
-                gap: 20rem;
+        .menuOrder {
+            width: 100%;
+            height: 70dvh;
+            overflow: auto;
+
+            p {
+                text-align: center;
             }
 
-            .cartItemActions {
-                border: 2px solid black;
+            .cartItem {
+                padding: 10px;
                 width: 100%;
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 50px;
+                flex-direction: column;
+                box-shadow: 1px 1px 1px rgb(118, 118, 118);
 
-                button {
-                    margin: 10px 0;
-                    width: 50px;
-                    height: 25px;
-                    border-radius: 5px;
+                .cartItemInfo {
+                    display: flex;
+                    justify-content: center;
+                    gap: 20rem;
+
+                    @media (max-width: 530px) {
+                        gap: 10rem;
+                    }
+
+                    @media (max-width: 355px) {
+                        gap: 5rem;
+                    }
                 }
 
-                button:hover {
-                    background: teal;
+                .cartItemActions {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 50px;
+
+                    @media (max-width: 530px) {
+                        gap: 30px;
+                    }
+
+                    @media (max-width: 355px) {
+                        gap: 10px;
+                    }
+
+                    button {
+                        margin: 10px 0;
+                        width: 50px;
+                        height: 25px;
+                        border-radius: 5px;
+                    }
+
+                    button:hover {
+                        background: teal;
+                    }
                 }
             }
         }
-    }
 
-    .summaryRow {
-        background: white;
-        display: flex;
-        justify-content: space-between;
-        font-weight: bold;
-        padding: 0 25px;
-        margin-top: 0.5em;
-    }
+        .summaryRow {
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            padding: 0 25px;
+            margin-top: 0.5em;
+        }
 
-    .button-style {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 10px;
-        padding: 1rem;
-        background-color: rgb(225, 130, 21);
-        color: white;
-        text-decoration: none;
-        border: none;
-        cursor: pointer;
-        text-align: center;
-        font-size: 16px;
-    }
-
-    .button-style:hover {
-        background-color: rgb(225, 130, 21, 0.6);
-        color: black;
-    }
-
-    .startBtn {
-        background: rgb(225, 130, 21);
-        width: 100%;
-        text-align: center;
-        margin-top: 10px;
-        padding: 1rem;
-
-        a {
+        .button-style {
             width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            padding: 1rem;
+            background-color: rgb(225, 130, 21);
             color: white;
             text-decoration: none;
             border: none;
             cursor: pointer;
             text-align: center;
+            font-size: 16px;
         }
 
-        a:hover {
+        .button-style:hover {
+            background-color: rgb(225, 130, 21, 0.6);
             color: black;
         }
-    }
 
-    .startBtn:hover {
-        background-color: rgb(225, 130, 21, 0.6);
+        .startBtn {
+            background: rgb(225, 130, 21);
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+            padding: 1rem;
+
+            a {
+                width: 100%;
+                color: white;
+                text-decoration: none;
+                border: none;
+                cursor: pointer;
+                text-align: center;
+            }
+
+            a:hover {
+                color: black;
+            }
+        }
+
+        .startBtn:hover {
+            background-color: rgb(225, 130, 21, 0.6);
+        }
     }
 }
 /* #endregion */
