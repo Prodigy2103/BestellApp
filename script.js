@@ -1,26 +1,3 @@
-function init() {
-    renderMenu();
-    renderCart();
-    renderCartView();
-
-    const menuItemsContainer = document.getElementById("cartDish");
-    if (menuItemsContainer) {
-        menuItemsContainer.addEventListener("click", function (event) {
-            const button = event.target.closest(".addToCartButton");
-            if (button) {
-                const menuItemDiv = button.closest(".menuItem");
-                if (menuItemDiv) {
-                    addToCart(parseInt(menuItemDiv.dataset.itemIndex));
-                }
-            }
-        });
-    }
-    setupCartInteractionListener("order");
-    setupCartInteractionListener("cartContainer");
-    const orderButton = document.getElementById("orderButton");
-    if (orderButton) orderButton.addEventListener("click", handleOrderButtonClick);
-}
-
 class CardItem {
     // #region attributes
 
@@ -43,7 +20,28 @@ class CardItem {
 
 let orderArray = [];
 
+function init() {
+    renderMenu();
+    renderCart();
+    renderCartView();
 
+    const menuItemsContainer = document.getElementById("cartDish");
+    if (menuItemsContainer) {
+        menuItemsContainer.addEventListener("click", function (event) {
+            const button = event.target.closest(".addToCartButton");
+            if (button) {
+                const menuItemDiv = button.closest(".menuItem");
+                if (menuItemDiv) {
+                    addToCart(parseInt(menuItemDiv.dataset.itemIndex));
+                }
+            }
+        });
+    }
+    setupCartInteractionListener("order");
+    setupCartInteractionListener("cartContainer");
+    const orderButton = document.getElementById("orderButton");
+    if (orderButton) orderButton.addEventListener("click", handleOrderButtonClick);
+}
 
 function formatPrice(price) {
     let formattedPrice = price.toFixed(2);
