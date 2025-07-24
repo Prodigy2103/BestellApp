@@ -276,8 +276,6 @@ function closeCartOverlay() {
     const cartContainer = document.getElementById('cartContainer');
     if (cartContainer) {
         cartContainer.style.display = 'none';
-        // Oder, falls Sie mit CSS-Klassen arbeiten:
-        // cartContainer.classList.remove('is-open'); 
     }
 }
 
@@ -285,36 +283,10 @@ function closeCartOverlay() {
 function openCartOverlay() {
     const cartContainer = document.getElementById('cartContainer');
     if (cartContainer) {
-        // HIER IST DER WICHTIGE PUNKT:
-        // Setzen Sie den display-Wert auf den Wert, der das Overlay sichtbar macht
-        // und sein Layout korrekt darstellt.
-
-        // Wenn Ihr #cartContainer ein block-level Element ist:
-        // cartContainer.style.display = 'block'; 
-        
-        // ODER Wenn Ihr #cartContainer ein Flex-Container ist:
         cartContainer.style.display = 'flex';
-
-        // ODER Wenn Ihr #cartContainer ein Grid-Container ist:
-        // cartContainer.style.display = 'grid';
-
-        // Wenn Sie das Overlay mit CSS-Klassen steuern:
-        // cartContainer.classList.add('is-open'); 
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     init();
-
-    const cartToggleButton = document.getElementById("cartToggle"); //Sucht das HTML-Element mit der ID "cartToggle"zum Öffnen/Schließen des Warenkorbs und speichert es in der Konstante cartToggleButton.
-    const cartContainer = document.getElementById("cartContainer"); //Sucht das HTML-Element mit der ID "cartContainer" den Hauptcontainer, der den gesamten Warenkorbinhalt anzeigt und speichert es in der Konstante cartContainer.
-
-    if (cartToggleButton && cartContainer) {
-        //Überprüft, ob beide Elemente – der Umschalter und der Container – erfolgreich im Dokument gefunden wurden. Dies verhindert Fehler, falls eines der Elemente fehlt.
-        cartToggleButton.addEventListener("click", () => {
-            //Fügt dem cartToggleButton einen Event-Listener hinzu. Bei jedem Klick auf diesen Button wird die anonyme Pfeilfunktion (() => { ... }) ausgeführt.
-            cartContainer.classList.remove("d_none"); // Entfernt die Klasse, um den Warenkorb anzuzeigen
-            renderCartView(); // Warenkorb immer neu rendern, wenn er geöffnet wird
-        });
-    }
 });

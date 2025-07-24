@@ -214,14 +214,12 @@ header {
     top: 0;
     right: 0;
     width: 20rem;
-    height: 90dvh;
     z-index: 10;
     color: black;
-    padding: 1rem;
 
     .content {
         width: 20rem;
-        height: 90dvh;
+        height: 40dvh;
         justify-content: center;
         flex-direction: column;
 
@@ -233,12 +231,12 @@ header {
 
         .orderItems {
             width: 100%;
-            height: 90dvh;
+            height: auto;
         }
 
         .menuOrder {
             width: 20rem;
-            height: 60dvh;
+            min-height: 20dvh;
             overflow: auto;
 
             p {
@@ -335,6 +333,7 @@ footer {
     border: none;
     color: white;
     font-size: 16px;
+    cursor: pointer;
 
     @media (max-width: 970px) {
         display: flex;
@@ -359,9 +358,10 @@ footer {
 #cartContainer {
     background: white;
     color: black;
-    width: 70%;
-    height: auto;
-    position: absolute;
+    width: 100%;
+    height: 50dvh;
+    position: fixed;
+    top: 5rem;
     z-index: 20;
 
     .content {
@@ -371,10 +371,10 @@ footer {
             width: 100%;
             padding: 1rem;
             .shopping-cart-container {
-                border: 2px solid red;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                padding-right: 1rem;
 
                 h2 {
                     text-align: center;
@@ -393,30 +393,31 @@ footer {
                     color: black;
                 }
 
-                #closeCartButton {
+                .startBtn {
                     background: rgb(225, 130, 21);
                     width: 50px;
                     height: 50px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    border-radius: 1em;
                 }
 
-                #closeCartButton:hover {
+                .startBtn:hover {
                     background-color: rgb(225, 130, 21, 0.6);
                 }
             }
 
             .orderItems {
-                border: 2px solid green;
                 width: 100%;
-                max-width: 700px; /* Adjust this value if you want a different max width */
-                margin: 0 auto; /* Centers the div horizontally */
+                max-width: 700px;
+                margin: 0 auto;
+                box-shadow: 1px 1px 2px lightgrey;
             }
 
             .menuOrder {
                 width: 100%;
-                height: auto;
+                height: 20dvh;
                 overflow: auto;
 
                 p {
@@ -546,10 +547,11 @@ footer {
     box-shadow: 1px 1px 2px rgb(225, 130, 21);
     background: white;
     color: black;
-    top: 40px;
-    left: 2em;
-    position: absolute;
     z-index: 20;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     .closeButton {
         padding: 0.5rem;

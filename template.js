@@ -72,30 +72,33 @@ function getOrderContainerTemplate(itemsHtml, subtotal, total) {
 function getCartContainerTemplate(itemsHtml, subtotal, total) {
     return `
         <div class="orderItems">
-        <div class="shopping-cart-container">
-            <h2>Ihr Warenkorb</h2>
-        <div class="startBtn">
-        <p><a href="#" onclick="closeCartOverlay(); return false;">Close</a></p>
-    </div>
-</div>
+            <div class="shopping-cart-container">
+                <h2>Ihr Warenkorb</h2>
+                <div class="startBtn">
+                    <p>
+                        <a href="#" onclick="closeCartOverlay(); return false;">Close</a>
+                    </p>
+                </div>
+            </div>
             <div class="menuOrder">
                 ${itemsHtml}
             </div>
             <div class="summaryRow">
                 <p>Zwischensumme:</p>
-                <p id="subtotal">${formatPrice(subtotal)}</p> </div>
+                <p id="subtotal">${formatPrice(subtotal)}</p>
+            </div>
             <div class="summaryRow">
                 <p>Lieferkosten:</p>
                 <p>5,00€</p>
             </div>
             <div class="summaryRow">
                 <p>Gesamt:</p>
-                <p id="total">${formatPrice(total)}</p> </div>
-                </div>
-                <div id="messageTwo">
-                Ihre Bestellung ist eingegangen und wird bearbeitet<br><br>
-                </div>
-                <button id="messageCartButton" class="button-style" class="d_none" onclick="showMessageTwo()">Bestellung bestätigen</button>
-                
-                `;
+                <p id="total">${formatPrice(total)}</p>
+            </div>
+        </div>
+        <div id="messageTwo">
+            Ihre Bestellung ist eingegangen und wird bearbeitet<br><br>
+        </div>
+        <button id="messageCartButton" class="button-style" class="d_none" onclick="showMessageTwo()">Bestellung bestätigen</button>
+    `;
 }
