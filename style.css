@@ -125,47 +125,7 @@ header {
 #shopNavi {
     @media (max-width: 970px) {
         width: 100%;
-    }
-
-    .content {
-        width: 100%;
-        height: 5em;
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        background: rgb(211, 211, 211, 0.4);
-        padding-left: 2em;
-        gap: 3em;
-
-        @media (max-width: 375px) {
-            padding: 0.5em;
-        }
-
-        nav {
-            width: 100%;
-            height: 3em;
-            display: flex;
-            align-items: center;
-            gap: 2em;
-
-            a {
-                color: rgb(84, 83, 83, 0.8);
-                font-weight: bold;
-                font-size: calc(16px + 0.5dvw);
-                padding: 0.5em;
-                border: 2px solid rgb(84, 83, 83, 0.8);
-                border-radius: 1em;
-            }
-
-            a:hover {
-                color: black;
-            }
-        }
-
-        img {
-            width: 3em;
-            height: 3em;
-        }
+        height: 2rem;
     }
 }
 /* #endregion */
@@ -233,6 +193,7 @@ header {
         button {
             background: white;
             border: none;
+            cursor: pointer;
 
             img {
                 width: 60px;
@@ -380,6 +341,12 @@ footer {
         justify-content: center;
         align-items: center;
         width: 100%;
+        position: fixed;
+        top: 490px;
+        left: 0;
+        z-index: 1000;
+        margin: 0;
+        padding: 1rem 0;
     }
 }
 /* #endregion */
@@ -392,132 +359,155 @@ footer {
 #cartContainer {
     background: white;
     color: black;
-    width: 100%;
-    height: 100dvh;
+    width: 70%;
+    height: auto;
     position: absolute;
     z-index: 20;
 
     .content {
-        h2 {
-            margin-top: 2rem;
-            text-align: center;
-        }
-        .orderItems {
+        width: 100%;
+
+        #cartOrder {
             width: 100%;
-        }
-
-        .menuOrder {
-            width: 100%;
-            height: 70dvh;
-            overflow: auto;
-
-            p {
-                text-align: center;
-            }
-
-            .cartItem {
-                padding: 10px;
-                width: 100%;
+            padding: 1rem;
+            .shopping-cart-container {
+                border: 2px solid red;
                 display: flex;
-                flex-direction: column;
-                box-shadow: 1px 1px 1px rgb(118, 118, 118);
+                justify-content: space-between;
+                align-items: center;
 
-                .cartItemInfo {
-                    display: flex;
-                    justify-content: center;
-                    gap: 20rem;
-
-                    @media (max-width: 530px) {
-                        gap: 10rem;
-                    }
-
-                    @media (max-width: 355px) {
-                        gap: 5rem;
-                    }
+                h2 {
+                    text-align: center;
                 }
 
-                .cartItemActions {
+                a {
                     width: 100%;
+                    color: white;
+                    text-decoration: none;
+                    border: none;
+                    cursor: pointer;
+                    text-align: center;
+                }
+
+                a:hover {
+                    color: black;
+                }
+
+                #closeCartButton {
+                    background: rgb(225, 130, 21);
+                    width: 50px;
+                    height: 50px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    gap: 50px;
+                }
 
-                    @media (max-width: 530px) {
-                        gap: 30px;
+                #closeCartButton:hover {
+                    background-color: rgb(225, 130, 21, 0.6);
+                }
+            }
+
+            .orderItems {
+                border: 2px solid green;
+                width: 100%;
+                max-width: 700px; /* Adjust this value if you want a different max width */
+                margin: 0 auto; /* Centers the div horizontally */
+            }
+
+            .menuOrder {
+                width: 100%;
+                height: auto;
+                overflow: auto;
+
+                p {
+                    text-align: center;
+                }
+
+                .cartItem {
+                    padding: 10px;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    box-shadow: 1px 1px 1px rgb(118, 118, 118);
+
+                    .cartItemInfo {
+                        display: flex;
+                        justify-content: center;
+                        gap: 20rem;
+
+                        @media (max-width: 530px) {
+                            gap: 10rem;
+                        }
+
+                        @media (max-width: 355px) {
+                            gap: 5rem;
+                        }
                     }
 
-                    @media (max-width: 355px) {
-                        gap: 10px;
-                    }
+                    .cartItemActions {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 50px;
 
-                    button {
-                        margin: 10px 0;
-                        width: 50px;
-                        height: 25px;
-                        border-radius: 5px;
-                    }
+                        @media (max-width: 530px) {
+                            gap: 30px;
+                        }
 
-                    button:hover {
-                        background: teal;
+                        @media (max-width: 355px) {
+                            gap: 10px;
+                        }
+
+                        button {
+                            margin: 10px 0;
+                            width: 50px;
+                            height: 25px;
+                            border-radius: 5px;
+                        }
+
+                        button:hover {
+                            background: teal;
+                        }
                     }
                 }
             }
-        }
 
-        .summaryRow {
-            background: white;
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            padding: 0 25px;
-            margin-top: 0.5em;
-        }
-
-        .button-style {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-            padding: 1rem;
-            background-color: rgb(225, 130, 21);
-            color: white;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            font-size: 16px;
-        }
-
-        .button-style:hover {
-            background-color: rgb(225, 130, 21, 0.6);
-            color: black;
-        }
-
-        .startBtn {
-            background: rgb(225, 130, 21);
-            width: 100%;
-            text-align: center;
-            margin-top: 10px;
-            padding: 1rem;
-
-            a {
+            .headBtn {
+                background: red;
                 width: 100%;
+                height: 50px;
+            }
+
+            .summaryRow {
+                background: white;
+                display: flex;
+                justify-content: space-between;
+                font-weight: bold;
+                padding: 0 25px;
+                margin-top: 0.5em;
+            }
+
+            .button-style {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+                padding: 1rem;
+                background-color: rgb(225, 130, 21);
                 color: white;
                 text-decoration: none;
                 border: none;
                 cursor: pointer;
                 text-align: center;
+                font-size: 16px;
             }
 
-            a:hover {
+            .button-style:hover {
+                background-color: rgb(225, 130, 21, 0.6);
                 color: black;
             }
-        }
-
-        .startBtn:hover {
-            background-color: rgb(225, 130, 21, 0.6);
         }
     }
 }

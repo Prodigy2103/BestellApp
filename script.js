@@ -272,6 +272,37 @@ function showMessageTwo() {
     };
 }
 
+function closeCartOverlay() {
+    const cartContainer = document.getElementById('cartContainer');
+    if (cartContainer) {
+        cartContainer.style.display = 'none';
+        // Oder, falls Sie mit CSS-Klassen arbeiten:
+        // cartContainer.classList.remove('is-open'); 
+    }
+}
+
+// Funktion zum Öffnen des Warenkorb-Overlays
+function openCartOverlay() {
+    const cartContainer = document.getElementById('cartContainer');
+    if (cartContainer) {
+        // HIER IST DER WICHTIGE PUNKT:
+        // Setzen Sie den display-Wert auf den Wert, der das Overlay sichtbar macht
+        // und sein Layout korrekt darstellt.
+
+        // Wenn Ihr #cartContainer ein block-level Element ist:
+        // cartContainer.style.display = 'block'; 
+        
+        // ODER Wenn Ihr #cartContainer ein Flex-Container ist:
+        cartContainer.style.display = 'flex';
+
+        // ODER Wenn Ihr #cartContainer ein Grid-Container ist:
+        // cartContainer.style.display = 'grid';
+
+        // Wenn Sie das Overlay mit CSS-Klassen steuern:
+        // cartContainer.classList.add('is-open'); 
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     init();
 
