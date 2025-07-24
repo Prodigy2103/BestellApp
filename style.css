@@ -219,7 +219,7 @@ header {
 
     .content {
         width: 20rem;
-        height: 40dvh;
+        height: 90dvh;
         justify-content: center;
         flex-direction: column;
 
@@ -236,7 +236,7 @@ header {
 
         .menuOrder {
             width: 20rem;
-            min-height: 20dvh;
+            height: 50dvh;
             overflow: auto;
 
             p {
@@ -344,7 +344,7 @@ footer {
         align-items: center;
         width: 100%;
         position: fixed;
-        top: 490px;
+        bottom: 0;
         left: 0;
         z-index: 1000;
         margin: 0;
@@ -362,7 +362,7 @@ footer {
     background: white;
     color: black;
     width: 100%;
-    height: 50dvh;
+    height: 900dvh;
     position: fixed;
     top: 5rem;
     z-index: 20;
@@ -422,7 +422,7 @@ footer {
 
             .menuOrder {
                 width: 100%;
-                height: 20dvh;
+                height: 50dvh;
                 overflow: auto;
 
                 p {
