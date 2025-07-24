@@ -156,47 +156,16 @@ function renderCartView() {
     }
 }
 
-// function addToCart(menuItemIndex) {
-//     if (!menuItemsArray?.[menuItemIndex]) {
-//         console.error("Menüelement nicht gefunden oder menuItemsArray nicht initialisiert.");
-//         return;
-//     }
-
-//     orderArray = orderArray || []; // Stellt sicher, dass orderArray initialisiert ist.
-
-//     const itemToAdd = menuItemsArray[menuItemIndex];
-//     // Suche im orderArray, ob der Artikel bereits existiert, basierend auf seinem ursprünglichen Index
-//     const existingItem = orderArray.find(
-//         (entry) => entry.item.index === itemToAdd.index
-//     );
-
-//     if (existingItem) {
-//         existingItem.quantity++;
-//     } else {
-//         orderArray.push({
-//             item: { ...itemToAdd, index: menuItemIndex }, // Füge den originalen Index hinzu
-//             quantity: 1,
-//         });
-//     }
-
-//     // Nach dem Aktualisieren des orderArray, den Warenkorb neu rendern
-//     renderCart();
-//     renderCartView(); // Aufruf beibehalten, falls es spezifische UI-Updates gibt
-// }
-
-
 function addToCart(menuItemIndex) {
     if (!menuItemsArray?.[menuItemIndex]) {
         console.error("Menüelement nicht gefunden oder menuItemsArray nicht initialisiert.");
         return;
     }
-
-    orderArray = orderArray || []; // Stellt sicher, dass orderArray initialisiert ist.
+    orderArray = orderArray || [];
 
     const itemToAdd = menuItemsArray[menuItemIndex];
-    // Suche im orderArray, ob der Artikel bereits existiert, basierend auf seinem ursprünglichen Index
     const existingItem = orderArray.find(
-        (entry) => entry.cartItem.index === itemToAdd.index
+        entry => entry.cartItem.index === menuItemIndex
     );
 
     if (existingItem) {
@@ -204,14 +173,12 @@ function addToCart(menuItemIndex) {
     } else {
         orderArray.push({
             item: { ...itemToAdd },
-            cartItem: { index: menuItemIndex }, // Speichert den menuItemIndex im cartItem
+            cartItem: { index: menuItemIndex },
             quantity: 1,
         });
     }
-
-    // Nach dem Aktualisieren des orderArray, den Warenkorb neu rendern
     renderCart();
-    renderCartView(); // Aufruf beibehalten, falls es spezifische UI-Updates gibt
+    renderCartView();
 }
 
 function addOneProduct(cartItemIndex) {
@@ -287,7 +254,7 @@ function clearCart() {
     renderCartView();  // Aktualisiert die detaillierte Warenkorbansicht
 }
 
-function showMessage() {
+function showMessageOne() {
     const msgDiv = document.getElementById("message");
     if (!msgDiv)    
         return;
@@ -308,7 +275,7 @@ function showMessage() {
     };
 }
 
-function showMessage() {
+function showMessageTwo() {
     const msgDiv = document.getElementById("messageTwo");
     if (!msgDiv)    
         return;

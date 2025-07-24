@@ -248,7 +248,7 @@ header {
 /* #endregion */
 
 /* #region Order */
-#orderContainer {
+/* #orderContainer {
     position: sticky;
     top: 0;
     right: 0;
@@ -263,6 +263,8 @@ header {
     }
 
     .content {
+
+        height: 90dvh;
         h2 {
             text-align: center;
             color: white;
@@ -270,6 +272,7 @@ header {
         }
 
         .orderItems {
+            border: 2px solid green;
             width: 100%;
             height: 50dvh;
         }
@@ -277,7 +280,6 @@ header {
         .menuOrder {
             width: 20rem;
             min-height: 50dvh;
-            height: 65dvh;
             overflow: auto;
 
             p {
@@ -327,10 +329,109 @@ header {
         }
 
         .button-style {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        margin-top: 10px;
+        padding: 1rem;
+        background-color: rgb(225, 130, 21);
+        color: white;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .button-style:hover {
+        background-color: rgb(225, 130, 21, 0.6);
+        color: black;
+    }
+    }
+} */
+
+#orderContainer {
+    position: sticky;
+    top: 0;
+    right: 0;
+    width: 20rem;
+    height: 90dvh;
+    z-index: 10;
+    color: black;
+    padding: 1rem;
+
+    .content {
+        width: 20rem;
+        height: 90dvh;
+        justify-content: center;
+        flex-direction: column;
+
+        h2 {
+            text-align: center;
+            color: white;
+            background: rgb(225, 130, 21);
+        }
+
+        .orderItems {
+            width: 100%;
+            height: 90dvh;
+        }
+
+        .menuOrder {
+            width: 20rem;
+            height: 60dvh;
+            overflow: auto;
+
+            p {
+                text-align: center;
+                margin-top: 1rem;
+            }
+
+            .cartItem {
+                padding: 10px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                box-shadow: 1px 1px 1px rgb(118, 118, 118);
+
+                .cartItemInfo {
+                    display: flex;
+                    justify-content: space-around;
+                }
+
+                .cartItemActions {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 20px;
+
+                    button {
+                        margin: 10px;
+                        width: 50px;
+                        height: 25px;
+                        border-radius: 5px;
+                    }
+
+                    button:hover {
+                        background: teal;
+                    }
+                }
+            }
+        }
+
+        .summaryRow {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-weight: bold;
+            padding: 0 15px;
+        }
+
+        .button-style {
             width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: end;
             margin-top: 10px;
             padding: 1rem;
             background-color: rgb(225, 130, 21);
@@ -342,8 +443,13 @@ header {
         }
 
         .button-style:hover {
-            background-color: #1f9d23;
+            background-color: rgb(225, 130, 21, 0.6);
+            color: black;
         }
+    }
+
+    @media (max-width: 970px) {
+        display: none;
     }
 }
 
@@ -391,7 +497,7 @@ footer {
     height: 100dvh;
     position: absolute;
     z-index: 20;
-    
+
     .content {
         width: 100%;
     }
